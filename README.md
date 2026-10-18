@@ -19,8 +19,9 @@ El repo tiene **dos versiones del mismo concepto**, hechas con herramientas de I
 | **Enfoque** | Sistema de diseño primero, luego pantallas | Pantallas primero, luego sistema |
 | **Pantallas** | 4 | 9 |
 | **Figma** | 🔗 [Ver archivo V1](https://www.figma.com/design/UfdaYLcSMFD2oCDriXJQ6h) | 🔗 [Ver archivo V2](https://www.figma.com/design/xelNH6yopJYMGTbcpcwQbG) |
+| **Prototipo** | — | ▶️ [Demo en vivo](https://design-screen-companion.lovable.app) · [Código](https://github.com/BryanGEP/nido-app-prototipo) |
 
-> 📍 [Versión 1](#-el-problema) · [Versión 2](#versión-2-google-stitch--claude) · [Comparación](#comparación-de-los-dos-flujos)
+> 📍 [Versión 1](#-el-problema) · [Versión 2](#versión-2-google-stitch--claude) · [Prototipo](#prototipo-funcional) · [Comparación](#comparación-de-los-dos-flujos)
 
 ---
 
@@ -114,6 +115,14 @@ En esta versión cambié el orden: primero generé pantallas con **Google Stitch
 - Agregar **estados** a los componentes (presionado, desactivado, seleccionado), que Stitch no genera.
 - Hoja visual de fundamentos (colores y tipografía) dentro del archivo.
 
+## Prototipo funcional
+
+Para cerrar el flujo llevé las pantallas de V2 a una **app web navegable** con **Lovable**: se puede recorrer desde la bienvenida y el inicio de sesión hasta Inicio, Explorar, Comunidad y Perfil.
+
+**[▶️ Abrir la demo](https://design-screen-companion.lovable.app)** · **[Ver el código](https://github.com/BryanGEP/nido-app-prototipo)** (React + TypeScript + Tailwind, con pruebas de navegación)
+
+**Flujo completo:** Google Stitch (pantallas) → Figma + Claude (sistema de diseño) → Lovable (prototipo).
+
 ---
 
 # Comparación de los dos flujos
@@ -135,6 +144,7 @@ En esta versión cambié el orden: primero generé pantallas con **Google Stitch
 - **Figma:** variables, componentes con propiedades y pantallas finales.
 - **html.to.design:** importación del HTML de Stitch a Figma.
 - **Conector Figma (MCP):** creación y conversión automatizada del sistema en Figma.
+- **Lovable:** prototipo funcional a partir de las pantallas de V2.
 
 ## 💡 Aprendizajes
 - Definir el sistema **antes** de las pantallas hace que la IA genere rápido **y** consistente.
