@@ -9,9 +9,18 @@
 
 **Nido** es el concepto de una app móvil para residentes de un coliving en Guadalajara. Desde ahí el residente consulta su estancia, se integra a la comunidad, reserva espacios de coworking y pide servicios del edificio.
 
-Es un **proyecto de práctica** para explorar el diseño de interfaces asistido por IA, sin perder la calidad de un sistema de diseño profesional. La marca "Nido" es ficticia.
+Es un **proyecto de práctica** para explorar el diseño de interfaces asistido por IA, sin perder la calidad de un sistema de diseño profesional. La marca "Nido" es ficticia y el proyecto no tiene relación con ninguna empresa real.
 
-🔗 **[Ver el archivo en Figma](https://www.figma.com/design/UfdaYLcSMFD2oCDriXJQ6h)**
+El repo tiene **dos versiones del mismo concepto**, hechas con herramientas de IA distintas, para comparar los dos flujos:
+
+| | Versión 1 | Versión 2 |
+|---|---|---|
+| **Herramienta** | Claude Design | Google Stitch + Claude |
+| **Enfoque** | Sistema de diseño primero, luego pantallas | Pantallas primero, luego sistema |
+| **Pantallas** | 4 | 9 |
+| **Figma** | 🔗 [Ver archivo V1](https://www.figma.com/design/UfdaYLcSMFD2oCDriXJQ6h) | 🔗 [Ver archivo V2](https://www.figma.com/design/xelNH6yopJYMGTbcpcwQbG) |
+
+> 📍 [Versión 1](#-el-problema) · [Versión 2](#versión-2-google-stitch--claude) · [Comparación](#comparación-de-los-dos-flujos)
 
 ---
 
@@ -72,13 +81,65 @@ En un coliving, el residente necesita resolver cosas operativas (pagos, reservas
 - El color nunca es la única señal: los estados llevan texto o forma (por ejemplo, un horario ocupado va tachado y con borde punteado).
 - Zonas táctiles de al menos 44 px.
 
+---
+
+# Versión 2: Google Stitch + Claude
+
+En esta versión cambié el orden: primero generé pantallas con **Google Stitch** y después convertí ese diseño en un **sistema de diseño real dentro de Figma** con Claude.
+
+### Acceso
+| Bienvenida | Iniciar sesión | Verificación | Registro |
+|:---:|:---:|:---:|:---:|
+| <img src="assets/v2/bienvenida.png" width="200"> | <img src="assets/v2/iniciar-sesion.png" width="200"> | <img src="assets/v2/verificacion.png" width="200"> | <img src="assets/v2/registro.png" width="200"> |
+
+### App
+| Inicio | Explorar | Detalle | Comunidad | Perfil |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="assets/v2/inicio.png" width="160"> | <img src="assets/v2/explorar.png" width="160"> | <img src="assets/v2/detalle.png" width="160"> | <img src="assets/v2/comunidad.png" width="160"> | <img src="assets/v2/perfil.png" width="160"> |
+
+### 🛠️ Proceso
+1. **Generación en Stitch.** Pantallas a partir de prompts, con fotografías generadas y estilo Material 3.
+2. **Importación a Figma.** Exporté desde Stitch e importé con el plugin *html.to.design*. El resultado se ve bien, pero queda **"plano"**: 2,139 capas sueltas, sin componentes, sin variables y sin estilos.
+3. **Conversión en sistema con Claude (conector Figma MCP):**
+   - **Respaldo** de las pantallas originales antes de modificar nada.
+   - **37 variables:** 30 colores con nombres de Material 3 (`primary`, `on-surface`, `surface-container`, `tertiary`…) y 7 radios, conectadas a más de 1,000 rellenos y más de 380 esquinas.
+   - **18 estilos de texto** en Plus Jakarta Sans.
+   - **147 íconos** convertidos en componentes; cada ícono de las pantallas es una instancia.
+   - **16 componentes**, 6 con variantes: botones, chips, píldoras, tarjeta de propiedad, de evento y de vecino, filas, mosaicos, encabezado y barra inferior (una variante por pantalla activa).
+   - **Más de 120 piezas** reemplazadas por instancias, conservando fotos y textos.
+4. **Verificación:** comparé cada pantalla contra el respaldo. Corregí transparencias perdidas al conectar variables, textos e íconos que no se transfirieron y cuadrículas desacomodadas, hasta que las alturas coincidieron con el original.
+
+### 🚧 Pendiente
+- Terminar los componentes de las 4 pantallas de acceso (campos, código de verificación, teclado, casillas).
+- Agregar **estados** a los componentes (presionado, desactivado, seleccionado), que Stitch no genera.
+- Hoja visual de fundamentos (colores y tipografía) dentro del archivo.
+
+---
+
+# Comparación de los dos flujos
+
+| | V1 · Claude Design | V2 · Stitch + Claude |
+|---|---|---|
+| **Velocidad para tener pantallas** | Media | ⚡ Muy alta |
+| **Riqueza visual** | Ilustraciones propias | Fotos generadas, look más "producto final" |
+| **Consistencia** | ✅ Alta desde el inicio (sistema primero) | Requiere limpiar después |
+| **Estructura en Figma** | Componentes y variables desde el principio | Capas planas → hubo que convertirlas |
+| **Estados de componentes** | Incluidos | No los genera |
+| **Ideal para** | Construir un producto mantenible | Explorar ideas rápido |
+
+**Conclusión:** las dos herramientas se complementan. **Stitch** sirve para explorar direcciones visuales en minutos, y **Claude** para convertir la dirección elegida en un sistema consistente, accesible y listo para un equipo de desarrollo.
+
 ## 🧰 Herramientas
-- **Claude Design:** sistema de diseño, pantallas e ilustraciones.
+- **Claude Design:** sistema de diseño, pantallas e ilustraciones (V1).
+- **Google Stitch:** generación de pantallas (V2).
 - **Figma:** variables, componentes con propiedades y pantallas finales.
-- **Conector Figma (MCP):** paso automatizado del diseño a Figma.
+- **html.to.design:** importación del HTML de Stitch a Figma.
+- **Conector Figma (MCP):** creación y conversión automatizada del sistema en Figma.
 
 ## 💡 Aprendizajes
 - Definir el sistema **antes** de las pantallas hace que la IA genere rápido **y** consistente.
+- Un diseño que "se ve bien" no es lo mismo que un diseño **mantenible**: la estructura (componentes, variables, estilos) es lo que permite escalar.
+- Al automatizar cambios en Figma hay que **verificar contra un respaldo**, porque los errores silenciosos (transparencias, textos, cuadrículas) no se ven a simple vista.
 - Las propiedades de componente evitan hacer *detach* y mantienen todo vinculado.
 - **Variables → marca, componentes → estructura, instancias → contenido.**
 
