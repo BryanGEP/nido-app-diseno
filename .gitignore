@@ -1,0 +1,7 @@
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Archivos de Figma (se comparten por link, no en el repo)
+*.fig
